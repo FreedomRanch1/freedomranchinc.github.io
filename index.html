@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freedom Ranch, Inc. - Equine Assisted Therapy</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            letter-spacing: 1px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(30, 58, 138, 0.7), rgba(220, 38, 38, 0.6)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%233b82f6" width="1200" height="600"/><path fill="%23dc2626" opacity="0.3" d="M0 400 Q 300 350 600 400 T 1200 400 V 600 H 0 Z"/></svg>');
+            background-size: cover;
+            background-position: center;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: #dc2626;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: #b91c1c;
+        }
+
+        section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #1e3a8a;
+            text-align: center;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+        }
+
+        .about-image {
+            background: #dbeafe;
+            height: 300px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        .programs {
+            background: #f5f5f5;
+        }
+
+        .program-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .program-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .program-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .program-card h3 {
+            color: #1e3a8a;
+            margin-bottom: 1rem;
+        }
+
+        .benefits-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .benefit-item {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .benefit-icon {
+            color: #dc2626;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .contact {
+            background: #1e3a8a;
+            color: white;
+        }
+
+        .contact h2 {
+            color: white;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-info {
+            font-size: 1.1rem;
+        }
+
+        .contact-info p {
+            margin-bottom: 1rem;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 0.8rem;
+            margin-bottom: 1rem;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .contact-form button {
+            background: #dc2626;
+            color: white;
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .contact-form button:hover {
+            background: #b91c1c;
+        }
+
+        footer {
+            background: #1e3a8a;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Lightbox styles */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .lightbox-close:hover {
+            color: #dc2626;
+        }
+
+        .gallery-photo {
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .gallery-photo:hover {
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo" style="display: flex; align-items: center; gap: 15px;">
+                <img src="https://i.imgur.com/A6Ix0X8.png" alt="" style="height: 50px; width: auto;">
+                <span>FREEDOM RANCH, INC.</span>
+            </div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#programs">Services</a></li>
+                <li><a href="#benefits">Benefits</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#donate" class="btn" style="padding: 0.5rem 1rem;">Donate</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div>
+                <h1>Freedom Through Connection</h1>
+                <p>Empowering personal growth through equine-assisted therapeutic programming</p>
+                <a href="mailto:freedomranchinc2020@gmail.com?subject=Get Involved with Freedom Ranch" class="btn">Get Involved</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2>About Us</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>Welcome to Freedom Ranch, Inc., a nonprofit equine-assisted therapeutic program offering by-appointment-only sessions in a quiet, farm-based setting. Our services support adults seeking personal growth, emotional regulation, stress reduction, and recovery-oriented experiences through structured, non-riding equine-assisted activities.</p>
+                <p style="margin-top: 1rem;">Our sessions emphasize personal insight and self-awareness, emotional regulation and mindfulness, confidence and trust-building, and connection, grounding, and reflection. All sessions are scheduled by appointment only to ensure safety, privacy, and individualized attention.</p>
+                <p style="margin-top: 1.5rem; padding: 1rem; background: #fff3cd; border-left: 4px solid #856404; border-radius: 5px;"><strong>Important Notice:</strong> Freedom Ranch, Inc. provides equine-assisted therapeutic programming and is not a substitute for licensed mental health or medical treatment. Individuals seeking clinical or emergency services should contact a licensed provider or emergency services directly.</p>
+            </div>
+            <div class="about-image" style="background: #dbeafe; padding: 2rem; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
+                <img src="https://i.imgur.com/YTcME8T.jpeg" alt="Horse" style="width: 150px; height: 150px; object-fit: cover; border-radius: 50%; margin-bottom: 1.5rem; border: 3px solid #dc2626;">
+                <blockquote style="font-size: 1.2rem; font-style: italic; color: #1e3a8a; line-height: 1.6; margin: 0; max-width: 90%;">
+                    "Horses carry the wisdom of healing in their hearts and offer it to any humans who possess the humility to listen."
+                </blockquote>
+                <p style="margin-top: 1rem; font-size: 0.95rem; color: #3b82f6;">— Unknown</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" style="background: #f5f5f5;">
+        <h2>Photo Gallery</h2>
+        <div style="text-align: center; margin-bottom: 2rem;">
+            <p style="font-size: 1.1rem;">Take a look at our farm, our horses, and the meaningful work we do</p>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+            <!-- Photo 1 -->
+            <div style="background: #dbeafe; height: 250px; border-radius: 10px; overflow: hidden;">
+                <img src="https://i.imgur.com/QNLH0Jn.jpeg" alt="Freedom Ranch Photo 1" class="gallery-photo" style="width: 100%; height: 100%; object-fit: cover;" onclick="openLightbox(this.src)">
+            </div>
+            <!-- Photo 2 -->
+            <div style="background: #dbeafe; height: 250px; border-radius: 10px; overflow: hidden;">
+                <img src="https://i.imgur.com/L6kVMW9.jpeg" alt="Freedom Ranch Photo 2" class="gallery-photo" style="width: 100%; height: 100%; object-fit: cover;" onclick="openLightbox(this.src)">
+            </div>
+            <!-- Photo 3 -->
+            <div style="background: #dbeafe; height: 250px; border-radius: 10px; overflow: hidden;">
+                <img src="https://i.imgur.com/TDfSyZs.jpeg" alt="Freedom Ranch Photo 3" class="gallery-photo" style="width: 100%; height: 100%; object-fit: cover;" onclick="openLightbox(this.src)">
+            </div>
+            <!-- Photo 4 -->
+            <div style="background: #dbeafe; height: 250px; border-radius: 10px; overflow: hidden;">
+                <img src="https://i.imgur.com/2OrMvhl.jpeg" alt="Freedom Ranch Photo 4" class="gallery-photo" style="width: 100%; height: 100%; object-fit: cover;" onclick="openLightbox(this.src)">
+            </div>
+            <!-- Photo 5 -->
+            <div style="background: #dbeafe; height: 250px; border-radius: 10px; overflow: hidden;">
+                <img src="https://i.imgur.com/rNIpdfP.jpeg" alt="Freedom Ranch Photo 5" class="gallery-photo" style="width: 100%; height: 100%; object-fit: cover;" onclick="openLightbox(this.src)">
+            </div>
+            <!-- Photo 6 -->
+            <div style="background: #dbeafe; height: 250px; border-radius: 10px; overflow: hidden;">
+                <img src="https://i.imgur.com/XgUVuRL.jpeg" alt="Freedom Ranch Photo 6" class="gallery-photo" style="width: 100%; height: 100%; object-fit: cover;" onclick="openLightbox(this.src)">
+            </div>
+            <!-- Logo - centered across full width -->
+            <div style="grid-column: 1 / -1; background: white; padding: 3rem; border-radius: 10px; text-align: center;">
+                <img src="https://i.imgur.com/aISdP0T.png" alt="Freedom Ranch, Inc. Logo" style="max-width: 600px; width: 100%; height: auto;">
+            </div>
+        </div>
+    </section>
+
+    <section id="programs" class="programs">
+        <h2>Our Services</h2>
+        <div class="program-grid">
+            <div class="program-card">
+                <h3>Personal Growth Sessions</h3>
+                <p>Structured equine-assisted activities designed to support self-awareness, personal insight, and individual development in a safe, supportive environment.</p>
+            </div>
+            <div class="program-card">
+                <h3>Emotional Regulation</h3>
+                <p>Ground-based experiences with horses that promote mindfulness, emotional awareness, and healthy coping strategies for stress and emotional challenges.</p>
+            </div>
+            <div class="program-card">
+                <h3>Confidence Building</h3>
+                <p>Activities focused on building trust, self-confidence, and interpersonal connection through meaningful interactions with horses.</p>
+            </div>
+            <div class="program-card">
+                <h3>Recovery Support</h3>
+                <p>Recovery-oriented experiences emphasizing grounding, reflection, and connection as part of a holistic wellness journey.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="benefits">
+        <h2>Benefits of Our Program</h2>
+        <div class="benefits-list">
+            <div class="benefit-item">
+                <div class="benefit-icon">✓</div>
+                <div>
+                    <strong>Personal Insight</strong>
+                    <p>Develop greater self-awareness and understanding through reflective equine interactions</p>
+                </div>
+            </div>
+            <div class="benefit-item">
+                <div class="benefit-icon">✓</div>
+                <div>
+                    <strong>Emotional Regulation</strong>
+                    <p>Learn mindfulness techniques and healthy emotional management strategies</p>
+                </div>
+            </div>
+            <div class="benefit-item">
+                <div class="benefit-icon">✓</div>
+                <div>
+                    <strong>Stress Reduction</strong>
+                    <p>Experience grounding and calming effects through connection with horses</p>
+                </div>
+            </div>
+            <div class="benefit-item">
+                <div class="benefit-icon">✓</div>
+                <div>
+                    <strong>Confidence & Trust</strong>
+                    <p>Build self-confidence and interpersonal trust in a supportive setting</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="donate">
+        <h2>Support Our Mission</h2>
+        <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+            <p style="font-size: 1.1rem; margin-bottom: 2rem;">Your generous donation helps us continue providing equine-assisted therapeutic programming to adults in our community. As a 501(c)(3) nonprofit organization, your contribution is tax-deductible and makes a meaningful difference in the lives of those we serve.</p>
+            
+            <div style="background: #f5f5f5; padding: 2rem; border-radius: 10px; margin-bottom: 2rem;">
+                <h3 style="color: #1e3a8a; margin-bottom: 1rem;">Ways to Give</h3>
+                <p style="margin-bottom: 1.5rem;">Every contribution, large or small, helps us maintain our facility, care for our horses, and provide programming to those in need.</p>
+                
+                <!-- PayPal Donation Button - Replace the href URL below with your PayPal donation link -->
+                <a href="#donate" class="btn" style="margin: 0.5rem; display: inline-block; font-size: 1.1rem; padding: 1rem 2rem;" onclick="alert('PayPal donation link coming soon! Please contact us directly to donate.'); return false;">
+                    💳 Donate Now via PayPal
+                </a>
+                
+                <p style="margin-top: 1.5rem; font-size: 0.95rem;">Or contact us directly:</p>
+                <a href="mailto:freedomranchinc2020@gmail.com?subject=Donation Inquiry" class="btn" style="margin: 0.5rem; display: inline-block; background: #3b82f6;">Email Us</a>
+                <a href="tel:815-884-0010" class="btn" style="margin: 0.5rem; display: inline-block; background: #3b82f6;">Call Us</a>
+            </div>
+
+            <div style="background: #dbeafe; padding: 1.5rem; border-radius: 10px;">
+                <p style="margin: 0; font-size: 0.95rem;"><strong>Note:</strong> We are currently setting up secure online donations through PayPal. In the meantime, please contact us to discuss donation options including monetary contributions and in-kind donations.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2>Get In Touch</h2>
+        <div class="contact-content">
+            <div class="contact-info">
+                <h3>Schedule a Session</h3>
+                <p>📍 Rockford, IL</p>
+                <p>📞 815-884-0010</p>
+                <p>✉️ freedomranchinc2020@gmail.com</p>
+                <p style="margin-top: 2rem;"><strong>Session Hours:</strong><br>
+                By Appointment Only</p>
+                <p style="margin-top: 1.5rem; font-size: 0.95rem; line-height: 1.8;">All sessions are scheduled individually to ensure privacy, safety, and personalized attention. Please contact us to arrange your visit.</p>
+            </div>
+            <div class="contact-form">
+                <h3>Send a Message</h3>
+                <form>
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <input type="text" placeholder="Subject">
+                    <textarea rows="5" placeholder="Your Message" required></textarea>
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Freedom Ranch, Inc. All rights reserved.</p>
+        <p>A 501(c)(3) Non-Profit Organization</p>
+        <p style="margin-top: 1rem; font-size: 0.9rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+            <strong>Important Notice:</strong> Freedom Ranch, Inc. provides equine-assisted therapeutic programming and is not a substitute for licensed mental health or medical treatment. Individuals seeking clinical or emergency services should contact a licensed provider or emergency services directly.
+        </p>
+    </footer>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="lightbox-close">&times;</span>
+        <img id="lightbox-img" class="lightbox-content">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            document.getElementById('lightbox').classList.add('active');
+            document.getElementById('lightbox-img').src = src;
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+        }
+
+        // Close lightbox with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            }
+        });
+    </script>
+</body>
+</html>
